@@ -36,16 +36,16 @@ class PurchaseOrderLine(models.Model):
         requests = self.mapped('order_id')
         precision = self.env['decimal.precision'].precision_get('Product Unit of Measure')
         for req in requests:
-            req_lines = self.filtered(lambda x: x.request_id == req)
+            req_lines = self.filtered(lambda x: x.order_id == req)
             msg = "<b>The request quantity has been updated.</b><ul>"
             for line in req_lines:
                 if float_compare(line.product_qty, values['product_qty'], precision_digits=precision) != 0:
                     msg += "<li> %s:" % (line.product_id.display_name,)
                     msg += "<br/>" + _("Request Quantity") + ": %s -> %s <br/>" % (
                     line.product_qty, float(values['product_qty']),)
-
                     msg += "</ul>"
                     req.message_post(body=msg)
+
 
     def write(self, values):
         if 'product_qty' in values:
