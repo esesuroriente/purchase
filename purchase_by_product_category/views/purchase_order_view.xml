@@ -7,13 +7,15 @@
           <field name="arch" type="xml">
 
                 <xpath expr="//field[@name='partner_ref']" position="after">
-                   <field name="categ_id"/>
+                   <field name="categ_id"
+                          attrs="{'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))]}"
+                     />
                 </xpath>
 
               <!-- PURCHASE ORDER LINES -->
                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='product_qty']"
                 position="after">
-                  <field name="note" optional="show"/>
+                  <field name="note" optional="show" attrs="{'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))]}"/>
                   <field name="categ_id" invisible="1"/>
                </xpath>
                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='product_id']"
