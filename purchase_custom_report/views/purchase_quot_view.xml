@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <template id="report_purchaseorder_document_signatures" inherit_id="purchase.report_purchasequotation_document">
+  <template id="report_purchasequot_document_signatures" inherit_id="purchase.report_purchasequotation_document">
 
       <xpath expr="/t/t/div/table/thead/tr/th[3]" position="after">
            <th>
