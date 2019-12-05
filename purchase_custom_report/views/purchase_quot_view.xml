@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="report_purchasequot_document_signatures" inherit_id="purchase.report_purchasequotation_document">
+
+      <xpath expr="/t/t/div/table/thead/tr/th[3]" position="after">
+           <th>
+             <span>Notas</span>
+           </th>
+      </xpath>
+      <xpath expr="/t/t/div/table/tbody/t/tr/t[1]/td[3]" position="after">
+           <td>
+             <span t-field="order_line.note"/>
+           </td>
+      </xpath>
+      <xpath expr="/t/t/div/table/thead/tr/th[4]" position="after">
+           <th>
+             <span>Precio unitario</span>
+           </th>
+      </xpath>
+      <xpath expr="/t/t/div/table/tbody/t/tr/t[1]/td[4]" position="after">
+           <td>
+             <span t-field="order_line.price_unit"/>
+           </td>
+      </xpath>
+      <xpath expr="/t/t/div/table/thead/tr/th[5]" position="after">
+           <th>
+             <span>Subtotal</span>
+           </th>
+      </xpath>
+      <xpath expr="/t/t/div/table/tbody/t/tr/t[1]/td[5]" position="after">
+           <td>
+             <span t-field="order_line.price_subtotal"/>
+           </td>
+     </xpath>
+
+      <xpath expr="/t/t/div/table" position="after">
+          <div id="total" class="row justify-content-end">
+              <div class="col-4">
+                  <table class="table table-sm">
+                      <tr class="border-black">
+                          <td><strong>Subtotal</strong></td>
+                          <td class="text-right">
+                              <span t-field="o.amount_untaxed"
+                                  t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>Taxes</td>
+                          <td class="text-right">
+                              <span t-field="o.amount_tax"
+                                  t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                          </td>
+                      </tr>
+                      <tr class="border-black o_total">
+                          <td><strong>Total</strong></td>
+                          <td class="text-right">
+                              <span t-field="o.amount_total"
+                                  t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                          </td>
+                      </tr>
+                  </table>
+              </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <span><br/><br/><br/></span>
+            </div>
+            <div class="col-6">
+              <span><br/><br/><br/></span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <span>
+                <span>____________________________<br/></span>
+                <span>Elaborado por</span>
+              </span>
+            </div>
+            <div class="col-6">
+              <span>_
+                <span>____________________________<br/></span>
+                <span>Aprobado por</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <span>Generado: </span>
+              <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
+            </div>
+          </div>
+      </xpath>
+
+  </template>
+</odoo>
