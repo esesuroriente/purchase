@@ -2,7 +2,11 @@
 <odoo>
   <template id="report_purchasequot_document_signatures" inherit_id="purchase.report_purchasequotation_document">
 
-      <xpath expr="/t/t/div/table/thead/tr/th[3]" position="after">
+    <xpath expr="/t/t/div/h2" position="replace">
+         <h2>Solicitud de compra <span t-field="o.name"/></h2>
+    </xpath>
+
+    <xpath expr="/t/t/div/table/thead/tr/th[3]" position="after">
            <th>
              <span>Notas</span>
            </th>

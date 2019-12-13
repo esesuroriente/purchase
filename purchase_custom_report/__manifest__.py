@@ -4,7 +4,7 @@
 
 {
     'name': 'Purchase custom PO',
-    'version': '13.0.1.0.0-beta.1',
+    'version': '13.0.1.0.0-beta.2',
     'category': 'Purchase',
     'author':'ESE SURORIENTE CAUCA',
     'description': """
